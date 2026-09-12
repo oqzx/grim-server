@@ -11,8 +11,7 @@
     "dist",
     "README.md",
     "LICENSE",
-    "vendor",
-    ".runtime"
+    "vendor"
   ],
   "engines": {
     "node": ">=20"
@@ -31,8 +30,8 @@
     "init": "node dist/cli.js init",
     "start": "node dist/cli.js start",
     "versions": "node dist/cli.js versions",
-    "prepare": "npm run build && npm run bundle:runtime",
-    "prepublishOnly": "npm run bundle:runtime && npm run bundle"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run bundle"
   },
   "dependencies": {
     "extract-zip": "^2.0.1",

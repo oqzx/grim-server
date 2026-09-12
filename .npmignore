@@ -20,6 +20,7 @@ coverage/
 .grim-server/
 .test-cache/
 grim-server.config.json
+.runtime/
 
 node_modules/
 package-lock.json

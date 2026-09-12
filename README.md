@@ -5,7 +5,7 @@ A self-contained Minecraft server launcher for Paper + Grim anticheat.
 ## Features
 
 - Downloads and caches Paper server jars and Grim anticheat jars automatically
-- Bundles or resolves a Java runtime automatically across Linux, macOS, and Windows
+- Resolves Java automatically from an explicit setting, `JAVA_HOME`, or the system `PATH`
 - Creates and updates a local `grim-server.config.json` file for server settings
 - Starts a server in a dedicated directory without removing worlds or config state
 - Exposes a small library for programmatic server startup and artifact discovery
@@ -24,7 +24,7 @@ grim-server init
 grim-server start
 ```
 
-This creates `grim-server.config.json` in the current directory and starts the configured server using the bundled runtime when available.
+This creates `grim-server.config.json` in the current directory and starts the configured server using the resolved Java runtime.
 
 ## Commands
 
@@ -132,7 +132,7 @@ Java is resolved in this order:
 4. System `PATH`
 5. Platform default Java command as a final fallback
 
-This package is designed to be self-contained: it can bundle a JDK at publish/install time and use it automatically across Linux, macOS, and Windows without requiring a preinstalled Java runtime.
+Java 21 must be installed separately, or supplied through the `java` configuration field or `JAVA_HOME`. The optional `bundle:runtime` script can download a local development runtime, but it is not included in the npm package.
 
 ## Artifact discovery
 
