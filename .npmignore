@@ -24,6 +24,7 @@ grim-server.config.json
 node_modules/
 package-lock.json
 *.tgz
+*.download
 
 *.log
 npm-debug.log*
