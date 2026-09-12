@@ -1,0 +1,60 @@
+{
+  "name": "grim-server",
+  "version": "0.1.0",
+  "description": "Ready to deploy Minecraft server with Grim anticheat.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "grim-server": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "vendor",
+    ".runtime"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "bundle": "node scripts/bundle-artifacts.mjs",
+    "bundle:runtime": "node scripts/bundle-runtime.mjs",
+    "clean": "node -e \"import('node:fs').then(({rmSync})=>rmSync('dist',{recursive:true,force:true}))\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test test/**/*.test.ts",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test",
+    "init": "node dist/cli.js init",
+    "start": "node dist/cli.js start",
+    "versions": "node dist/cli.js versions",
+    "prepare": "npm run build && npm run bundle:runtime",
+    "prepublishOnly": "npm run bundle:runtime && npm run bundle"
+  },
+  "dependencies": {
+    "extract-zip": "^2.0.1",
+    "tar": "^7.4.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/github": "^11.0.3",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@types/node": "^22.13.10",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "globals": "^15.15.0",
+    "prettier": "^3.5.3",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.0",
+    "semantic-release": "^24.2.3"
+  }
+}
